@@ -1,4 +1,4 @@
-# MPVTemplates
+# MVPTemplates
 MVP Templates for a scene and unit tests
 
 Put them in the Templates folder of Xcode found here: 
