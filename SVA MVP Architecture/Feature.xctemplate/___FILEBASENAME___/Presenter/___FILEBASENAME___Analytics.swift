@@ -6,6 +6,7 @@
 //  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import OPCore
 import Foundation
 
 protocol ___VARIABLE_featureName___AnalyticsLogic {
@@ -16,28 +17,25 @@ protocol ___VARIABLE_featureName___AnalyticsLogic {
 
 class ___VARIABLE_featureName___Analytics: ___VARIABLE_featureName___AnalyticsLogic {
     
-    // TODO: - Implement Analytics when ready, hopefully Protocol Oriented
-//    var analyticsService: INXAnalyticsLogic = INXAnalytics()
+    var analyticsService: OPAnalyticsProtocol = OPAnalytics.shared
 
-    // TODO: - Implement Analytics when ready
     func eventLoadVC() {
-        debugPrint("eventLoadVC called")
-//        analyticsService.logEvent(eventName: "Dashboard", params: ["loadVC" : "OK"])
+        analyticsService.logEvent(eventName: "___VARIABLE_featureName___", parameters: ["loadVC" : "OK"])
     }
     func eventLoadDataOK() {
-        debugPrint("eventLoadDataOK called")
-//        analyticsService.logEvent(eventName: "Dashboard", params: ["loadData" : "OK"])
+        analyticsService.logEvent(eventName: "___VARIABLE_featureName___", parameters:["loadData": "OK"])
     }
     func eventLoadDataError(_ serviceError: ServiceError ) {
-        debugPrint("eventLoadDataError called")
-//        let params = [
-//            "loadData": "Error",
-//            "responseCode": serviceError.responseCode,
-//            "message": serviceError.message
-//        ]
-//
-//        analyticsService.logEvent(eventName: "Dashboard", params: params)
-//        analyticsService.isError(featureName: "Dashboard", serviceError: serviceError)
+        let parameters = [
+            NSLocalizedDescriptionKey: NSLocalizedString("The request failed.", comment: ""),
+            NSLocalizedFailureReasonErrorKey: NSLocalizedString("The response returned a 404.", comment: ""),
+            NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Does this page exist?", comment: ""),
+            "ProductID": "123456",
+            "View": "___VARIABLE_featureName___"
+        ]
+        
+        analyticsService.logEvent(eventName: "___VARIABLE_featureName___", parameters: parameters)
+        analyticsService.registerError(code: -1001, parameters: parameters)
     }
     
 }
