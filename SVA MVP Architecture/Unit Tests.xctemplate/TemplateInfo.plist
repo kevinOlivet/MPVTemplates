@@ -4,12 +4,12 @@
 <dict>
 	<key>DefaultCompletionName</key>
 	<string>MyScene</string>
-  <key>Description</key>
-  <string>This generates unit tests for your scene using Uncle Bob's clean architecture. It consists of three test files for view controller, interactor, and presenter.</string>
-  <key>Kind</key>
-  <string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
-  <key>Options</key>
-  <array>
+	<key>Description</key>
+	<string>This generates MVP unit tests for your scene using the special flavor of SVA Transbank.</string>
+	<key>Kind</key>
+	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+	<key>Options</key>
+	<array>
 		<dict>
 			<key>Description</key>
 			<string>The name of the scene to create tests for</string>
@@ -24,15 +24,15 @@
 			<key>Type</key>
 			<string>text</string>
 		</dict>
-    <dict>
+		<dict>
 			<key>Default</key>
 			<string>___VARIABLE_sceneName:identifier___</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Type</key>
 			<string>static</string>
-    </dict>
-    <dict>
+		</dict>
+		<dict>
 			<key>Default</key>
 			<string>___VARIABLE_sceneName:identifier___ViewControllerTests</string>
 			<key>Description</key>
@@ -45,22 +45,22 @@
 			<true/>
 			<key>Type</key>
 			<string>static</string>
-    </dict>
-    <dict>
+		</dict>
+		<dict>
 			<key>Default</key>
-			<string>___VARIABLE_sceneName:identifier___InteractorTests</string>
+			<string>___VARIABLE_sceneName:identifier___AnalyticsTests</string>
 			<key>Description</key>
-			<string>The interactor tests name</string>
+			<string>The analytics tests name</string>
 			<key>Identifier</key>
-			<string>interactorTestsName</string>
+			<string>analyticsTestsName</string>
 			<key>Name</key>
-			<string>Interactor Tests Name:</string>
+			<string>Analytics Tests Name:</string>
 			<key>Required</key>
 			<true/>
 			<key>Type</key>
 			<string>static</string>
-    </dict>
-    <dict>
+		</dict>
+		<dict>
 			<key>Default</key>
 			<string>___VARIABLE_sceneName:identifier___PresenterTests</string>
 			<key>Description</key>
@@ -73,29 +73,113 @@
 			<true/>
 			<key>Type</key>
 			<string>static</string>
-    </dict>
-    <dict>
+		</dict>
+		<dict>
 			<key>Default</key>
-			<string>___VARIABLE_sceneName:identifier___WorkerTests</string>
+			<string>___VARIABLE_sceneName:identifier___ServiceTests</string>
 			<key>Description</key>
-			<string>The worker tests name</string>
+			<string>The service tests name</string>
 			<key>Identifier</key>
-			<string>workerTestsName</string>
+			<string>serviceTestsName</string>
 			<key>Name</key>
-			<string>Worker Tests Name:</string>
+			<string>Service Tests Name:</string>
 			<key>Required</key>
 			<true/>
 			<key>Type</key>
 			<string>static</string>
-    </dict>
-  </array>
-  <key>Platforms</key>
-  <array>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___ModelTests</string>
+			<key>Description</key>
+			<string>The model tests name</string>
+			<key>Identifier</key>
+			<string>modelTestsName</string>
+			<key>Name</key>
+			<string>Model Tests Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___AnalyticsLogicSpy</string>
+			<key>Description</key>
+			<string>The Analytics Logic Spy</string>
+			<key>Identifier</key>
+			<string>analyticsLogicSpyName</string>
+			<key>Name</key>
+			<string>Analytics Logic Spy Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___ServiceLogicSpy</string>
+			<key>Description</key>
+			<string>The Service Logic Spy</string>
+			<key>Identifier</key>
+			<string>serviceLogicSpyName</string>
+			<key>Name</key>
+			<string>Service Logic Spy Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___PresenterLogicSpy</string>
+			<key>Description</key>
+			<string>The Presenter Logic Spy</string>
+			<key>Identifier</key>
+			<string>presenterLogicSpyName</string>
+			<key>Name</key>
+			<string>Presenter Logic Spy Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___ModelLogicSpy</string>
+			<key>Description</key>
+			<string>The Model Logic Spy</string>
+			<key>Identifier</key>
+			<string>modelLogicSpyName</string>
+			<key>Name</key>
+			<string>Model Logic Spy Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___ViewLogicSpy</string>
+			<key>Description</key>
+			<string>The View Logic Spy</string>
+			<key>Identifier</key>
+			<string>viewLogicSpyName</string>
+			<key>Name</key>
+			<string>View Logic Spy Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+	</array>
+	<key>Platforms</key>
+	<array>
 		<string>com.apple.platform.iphoneos</string>
-  </array>
+	</array>
 	<key>SortOrder</key>
 	<string>7</string>
-  <key>Summary</key>
-  <string>This generates unit tests for your scene using Uncle Bob's clean architecture.</string>
+	<key>Summary</key>
+	<string>This generates unit tests for your scene using Uncle Bob&apos;s clean architecture.</string>
 </dict>
 </plist>

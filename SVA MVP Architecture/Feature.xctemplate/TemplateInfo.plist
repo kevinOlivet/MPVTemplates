@@ -102,6 +102,34 @@
 			<key>Type</key>
 			<string>static</string>
 		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_featureName:identifier___Analytics</string>
+			<key>Description</key>
+			<string>The analytics handler</string>
+			<key>Identifier</key>
+			<string>analyticsName</string>
+			<key>Name</key>
+			<string>Analytics Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_featureName:identifier___Entity</string>
+			<key>Description</key>
+			<string>The entity name</string>
+			<key>Identifier</key>
+			<string>entityName</string>
+			<key>Name</key>
+			<string>Entity Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+		</dict>
 	</array>
 	<key>Platforms</key>
 	<array>
