@@ -58,15 +58,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         XCTAssertTrue(spyPresenter.getEntityArrayCalled, "presentData should call the presenter getEntityArrayCalled")
         XCTAssertEqual(spyPresenter.getEntityArray().first?.sampleParameter, "getEntityArraySampleFirst", "should match the info in the PresenterLogicSpy")
         XCTAssertEqual(spyPresenter.getEntityArray().first?.sampleParameter1, 1234, "should match the info in the PresenterLogicSpy")
-        
-        let labelExpectation = expectation(description: "Should ask the view controller to display the result")
-        DispatchQueue.main.async {
-            if self.sut.getLabelText ==  "testSampleParameter" {
-                XCTAssertEqual(self.sut.getLabelText, "testSampleParameter", "label text should match the passed String")
-                labelExpectation.fulfill()
-            }
-        }
-        waitForExpectations(timeout: 1.0, handler: nil)
+        XCTAssertEqual(self.sut.getLabelText, "testSampleParameter", "label text should match the passed String")
     }
     func testDisplayError() {
         // Given
@@ -74,15 +66,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         // When
         sut.displayError("Ups", message: message)
         // Then
-        // Test the asynchronous
-        let labelExpectation = expectation(description: "Should ask the view controller to display the result")
-        DispatchQueue.main.async {
-            if self.sut.getLabelText ==  "testMessage" {
-                XCTAssertEqual(self.sut.getLabelText, "testMessage", "label text should match the passed String")
-                labelExpectation.fulfill()
-            }
-        }
-        waitForExpectations(timeout: 1.0, handler: nil)
+        XCTAssertEqual(self.sut.getLabelText, "testMessage", "label text should match the passed String")
     }
 
 }

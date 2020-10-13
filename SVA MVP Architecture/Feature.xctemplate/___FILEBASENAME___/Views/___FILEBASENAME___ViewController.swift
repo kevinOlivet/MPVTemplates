@@ -41,7 +41,7 @@ class ___VARIABLE_featureName___ViewController: UIViewController, ___VARIABLE_fe
     }
     // TODO: - Replace testLabel with real UI
     func addTestLabel() {
-        label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: 330, height: 21))
         label!.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
         label!.textAlignment = .center
         label!.text = "___VARIABLE_featureName___ViewController"
@@ -51,19 +51,15 @@ class ___VARIABLE_featureName___ViewController: UIViewController, ___VARIABLE_fe
     // MARK: - ___VARIABLE_featureName___ViewLogic
     func displayData(_ data: ___VARIABLE_featureName___Entity) {
         // TODO: - Display data appropriately
-        DispatchQueue.main.async {
-            self.label?.text = data.sampleParameter
-        }
+        self.label?.text = data.sampleParameter
         for item in self.presenter.getEntityArray() {
             debugPrint("presentData: \(item.sampleParameter)")
         }
     }
     func displayError(_ title: String, message: String) {
         // TODO: - Display error appropriately
-        DispatchQueue.main.async {
-            self.label?.text = message
-            debugPrint("errorMessage called")
-        }
+        self.label?.text = message
+        debugPrint("errorMessage called")
     }
 
     // GettersSetters

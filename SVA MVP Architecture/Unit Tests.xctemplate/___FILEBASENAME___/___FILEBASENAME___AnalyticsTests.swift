@@ -7,7 +7,7 @@
 //
 
 @testable import ___PROJECTNAMEASIDENTIFIER___
-import OPCore
+import OPCommons
 import XCTest
 
 class ___VARIABLE_sceneName___AnalyticsTests: XCTestCase {

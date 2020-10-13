@@ -6,12 +6,13 @@
 //  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-// TODO: - Might need to be public and have a public init() {}
-class ___VARIABLE_featureName___Factory {
-    
-    func getInitVC() -> UIViewController {
+public class ___VARIABLE_featureName___Factory {
+
+    public init() {}
+
+    public func getInitVC() -> UIViewController {
         let service = ___VARIABLE_featureName___Service()
         let model = ___VARIABLE_featureName___Model(service)
         let analytics = ___VARIABLE_featureName___Analytics()
