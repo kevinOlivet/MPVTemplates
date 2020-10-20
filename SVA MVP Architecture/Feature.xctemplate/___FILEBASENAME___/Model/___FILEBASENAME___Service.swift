@@ -12,7 +12,7 @@ protocol ___VARIABLE_featureName___ServiceLogic: class {
     func getDataFromAPI(_ completion: @escaping (Result<[___VARIABLE_featureName___Entity], ServiceError>) -> () )
 }
 
-class ___VARIABLE_featureName___Service: ___VARIABLE_featureName___ServiceLogic {
+final class ___VARIABLE_featureName___Service: ___VARIABLE_featureName___ServiceLogic {
     
     func getDataFromAPI(_ completion: @escaping (Result<[___VARIABLE_featureName___Entity], ServiceError>) -> ()) {
         

@@ -16,7 +16,7 @@ protocol ___VARIABLE_featureName___DataStore {
     var storedEntityArray: [___VARIABLE_featureName___Entity] { get }
 }
 
-class ___VARIABLE_featureName___Model: ___VARIABLE_featureName___ModelLogic, ___VARIABLE_featureName___DataStore {
+final class ___VARIABLE_featureName___Model: ___VARIABLE_featureName___ModelLogic, ___VARIABLE_featureName___DataStore {
     
     var service: ___VARIABLE_featureName___ServiceLogic
     var storedEntityArray: [___VARIABLE_featureName___Entity] = []

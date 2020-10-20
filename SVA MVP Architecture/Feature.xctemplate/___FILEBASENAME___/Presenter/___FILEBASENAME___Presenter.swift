@@ -14,7 +14,7 @@ protocol ___VARIABLE_featureName___PresenterLogic {
     func getEntityArray() -> [___VARIABLE_featureName___Entity]
 }
 
-class ___VARIABLE_featureName___Presenter: ___VARIABLE_featureName___PresenterLogic {
+final class ___VARIABLE_featureName___Presenter: ___VARIABLE_featureName___PresenterLogic {
     
     weak var view: ___VARIABLE_featureName___ViewLogic?
     var model: (___VARIABLE_featureName___ModelLogic & ___VARIABLE_featureName___DataStore)

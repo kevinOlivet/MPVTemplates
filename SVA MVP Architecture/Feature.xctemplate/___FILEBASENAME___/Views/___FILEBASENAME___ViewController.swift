@@ -13,7 +13,7 @@ protocol ___VARIABLE_featureName___ViewLogic: class {
     func displayError(_ title: String, message: String)
 }
 
-class ___VARIABLE_featureName___ViewController: UIViewController, ___VARIABLE_featureName___ViewLogic {
+final class ___VARIABLE_featureName___ViewController: UIViewController, ___VARIABLE_featureName___ViewLogic {
     
     var presenter: ___VARIABLE_featureName___PresenterLogic
     // TODO: - Replace testLabel with real UI

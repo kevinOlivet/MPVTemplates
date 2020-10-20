@@ -15,7 +15,7 @@ protocol ___VARIABLE_featureName___AnalyticsLogic {
     func eventLoadDataError(_ serviceError: ServiceError )
 }
 
-class ___VARIABLE_featureName___Analytics: ___VARIABLE_featureName___AnalyticsLogic {
+final class ___VARIABLE_featureName___Analytics: ___VARIABLE_featureName___AnalyticsLogic {
     
     var analyticsService: OPAnalyticsProtocol = OPAnalytics.shared
 

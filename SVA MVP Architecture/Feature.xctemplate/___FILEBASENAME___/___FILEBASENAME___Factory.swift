@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ___VARIABLE_featureName___Factory {
+final public class ___VARIABLE_featureName___Factory {
 
     public init() {}
 
