@@ -3,9 +3,10 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright (c) ___YEAR___ Transbank. All rights reserved.
 //
 
+import OPCommons
 @testable import ___PROJECTNAMEASIDENTIFIER___
 
 class ___VARIABLE_sceneName___AnalyticsLogicSpy: ___VARIABLE_sceneName___AnalyticsLogic {

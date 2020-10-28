@@ -3,10 +3,10 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright (c) ___YEAR___ Transbank. All rights reserved.
 //
 
-import Foundation
+import OPCommons
 
 protocol ___VARIABLE_featureName___ServiceLogic: class {
     func getDataFromAPI(_ completion: @escaping (Result<[___VARIABLE_featureName___Entity], ServiceError>) -> () )
