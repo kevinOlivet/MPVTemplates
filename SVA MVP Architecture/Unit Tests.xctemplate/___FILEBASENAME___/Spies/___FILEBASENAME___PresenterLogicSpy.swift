@@ -19,8 +19,8 @@ class ___VARIABLE_sceneName___PresenterLogicSpy: ___VARIABLE_sceneName___Present
     }
     func getEntityArray() -> [___VARIABLE_sceneName___Entity] {
         getEntityArrayCalled = true
-        let item = ___VARIABLE_sceneName___Entity(sampleParameter: "getEntityArraySampleFirst", sampleParameter1: 1234)
-        return [item]
+        let item = ___VARIABLE_sceneName___Entity(success: true, code: 0, message: "testMessage", data: MyFeature3Entity.Data())
+        return [item.data!]
     }
 
 }

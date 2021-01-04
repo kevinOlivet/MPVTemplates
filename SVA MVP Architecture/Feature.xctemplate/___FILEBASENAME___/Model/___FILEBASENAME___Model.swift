@@ -9,27 +9,27 @@
 import OPCommons
 
 protocol ___VARIABLE_featureName___ModelLogic {
-    func getData( _ completion: @escaping (Result<Bool, ServiceError>) -> ())
+    func getData( _ completion: @escaping (Result<Bool, APIManagerError>) -> ())
 }
 
 protocol ___VARIABLE_featureName___DataStore {
-    var storedEntityArray: [___VARIABLE_featureName___Entity] { get }
+    var storedEntity: ___VARIABLE_featureName___Entity! { get }
 }
 
 final class ___VARIABLE_featureName___Model: ___VARIABLE_featureName___ModelLogic, ___VARIABLE_featureName___DataStore {
     
     var service: ___VARIABLE_featureName___ServiceLogic
-    var storedEntityArray: [___VARIABLE_featureName___Entity] = []
+    var storedEntity: ___VARIABLE_featureName___Entity!
     
     init(_ service:  ___VARIABLE_featureName___ServiceLogic) {
         self.service = service
     }
     
-    func getData( _ completion: @escaping (Result<Bool, ServiceError>) -> ()) {
+    func getData(_ completion: @escaping (Result<Bool, APIManagerError>) -> ()) {
         self.service.getDataFromAPI { result in
             switch result {
-            case .success(let storedEntityArray):
-                self.storedEntityArray = storedEntityArray
+            case .success(let storedEntity):
+                self.storedEntity = storedEntity
                 completion(.success(true))
             case .failure(let error):
                 completion(.failure(error))

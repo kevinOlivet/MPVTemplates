@@ -9,6 +9,10 @@
 import Foundation
 
 struct ___VARIABLE_featureName___Entity: Codable {
-    let sampleParameter: String
-    let sampleParameter1: Int
+    let success: Bool
+    let code: Int
+    let message: String
+    let data: Data?
+    // MARK: - Data
+    struct Data: Codable {}
 }

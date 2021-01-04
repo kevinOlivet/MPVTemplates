@@ -55,7 +55,7 @@ class ___VARIABLE_sceneName___AnalyticsTests: XCTestCase {
     }
     func testEventLoadDataError() {
         // Given
-        let serviceError = ServiceError(responseCode: "54321", message: "testEventLoadDataError")
+        let serviceError = APIManagerError(.BACKEND_ERROR, message: "testEventLoadDataError", "-1")
         // When
         sut.eventLoadDataError(serviceError)
         // Then

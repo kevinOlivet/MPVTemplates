@@ -12,7 +12,7 @@ import Foundation
 protocol ___VARIABLE_featureName___AnalyticsLogic {
     func eventLoadVC()
     func eventLoadDataOK()
-    func eventLoadDataError(_ serviceError: ServiceError )
+    func eventLoadDataError(_ serviceError: APIManagerError )
 }
 
 final class ___VARIABLE_featureName___Analytics: ___VARIABLE_featureName___AnalyticsLogic {
@@ -25,7 +25,7 @@ final class ___VARIABLE_featureName___Analytics: ___VARIABLE_featureName___Analy
     func eventLoadDataOK() {
         analyticsService.logEvent(eventName: "___VARIABLE_featureName___", parameters:["loadData": "OK"])
     }
-    func eventLoadDataError(_ serviceError: ServiceError ) {
+    func eventLoadDataError(_ serviceError: APIManagerError ) {
         let parameters = [
             NSLocalizedDescriptionKey: NSLocalizedString("The request failed.", comment: ""),
             NSLocalizedFailureReasonErrorKey: NSLocalizedString("The response returned a 404.", comment: ""),

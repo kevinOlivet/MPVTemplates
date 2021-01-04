@@ -15,7 +15,7 @@ class ___VARIABLE_sceneName___AnalyticsLogicSpy: ___VARIABLE_sceneName___Analyti
     var eventLoadDataOKCalled = false
     var eventLoadDataErrorCalled = false
 
-    var eventLoadDataErrorSample: ServiceError?
+    var eventLoadDataErrorSample: APIManagerError?
 
     // MARK: - Methods
     func eventLoadVC() {
@@ -24,7 +24,7 @@ class ___VARIABLE_sceneName___AnalyticsLogicSpy: ___VARIABLE_sceneName___Analyti
     func eventLoadDataOK() {
         eventLoadDataOKCalled = true
     }
-    func eventLoadDataError(_ serviceError: ServiceError) {
+    func eventLoadDataError(_ serviceError: APIManagerError) {
         eventLoadDataErrorCalled = true
         eventLoadDataErrorSample = serviceError
     }

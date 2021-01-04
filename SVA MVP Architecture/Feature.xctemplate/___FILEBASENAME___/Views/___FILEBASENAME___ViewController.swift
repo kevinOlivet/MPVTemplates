@@ -6,14 +6,15 @@
 //  Copyright (c) ___YEAR___ Transbank. All rights reserved.
 //
 
-import UIKit
+import OPCommons
+import OPUIElements
 
 protocol ___VARIABLE_featureName___ViewLogic: class {
     func displayData(_ data: ___VARIABLE_featureName___Entity)
-    func displayError(_ title: String, message: String)
+    func displayError(type: FullScreenMessageType)
 }
 
-final class ___VARIABLE_featureName___ViewController: UIViewController, ___VARIABLE_featureName___ViewLogic {
+final class ___VARIABLE_featureName___ViewController: OPBaseViewController, ___VARIABLE_featureName___ViewLogic {
     
     var presenter: ___VARIABLE_featureName___PresenterLogic
     // TODO: - Replace testLabel with real UI
@@ -24,7 +25,7 @@ final class ___VARIABLE_featureName___ViewController: UIViewController, ___VARIA
         self.presenter = presenter
         super.init(
             nibName: String(describing: ___VARIABLE_featureName___ViewController.self),
-            bundle: Bundle(for: ___VARIABLE_featureName___ViewController.classForCoder())
+            bundle: OPHelpCenterSDK.resourceBundle  // Change to your bundle
         )
     }
     
@@ -36,29 +37,39 @@ final class ___VARIABLE_featureName___ViewController: UIViewController, ___VARIA
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.getData()
+        getData()
         addTestLabel()
     }
     // TODO: - Replace testLabel with real UI
     func addTestLabel() {
         label = UILabel(frame: CGRect(x: 0, y: 0, width: 330, height: 21))
-        label!.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+        label!.center = CGPoint(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2)
         label!.textAlignment = .center
         label!.text = "___VARIABLE_featureName___ViewController"
         self.view.addSubview(label!)
     }
     
     // MARK: - ___VARIABLE_featureName___ViewLogic
+    @objc
+    func getData() {
+        genericHideMessageView()
+        CommonsUtils.showHudWith(nil, dimBackground: false)
+        self.presenter.getData()
+    }
     func displayData(_ data: ___VARIABLE_featureName___Entity) {
+        CommonsUtils.hideHud(true)
+        genericDisplayFullMessage(type: .messageSuccess, retryAction: #selector(getData))
         // TODO: - Display data appropriately
-        self.label?.text = data.sampleParameter
+        self.label?.text = data.message
         for item in self.presenter.getEntityArray() {
-            debugPrint("presentData: \(item.sampleParameter)")
+//            debugPrint("presentData: \(item.key)")
         }
     }
-    func displayError(_ title: String, message: String) {
+    func displayError(type: FullScreenMessageType) {
+        CommonsUtils.hideHud(true)
+        genericDisplayFullMessage(type: type, retryAction: #selector(getData))
         // TODO: - Display error appropriately
-        self.label?.text = message
+        self.label?.text = "displayErrorCalled"
         debugPrint("errorMessage called")
     }
 

@@ -63,27 +63,8 @@ class ___VARIABLE_sceneName___ModelTests: XCTestCase {
             case .failure(let error):
                 // Then
                 XCTAssertTrue(self.spyService.getDataFromAPICalled, "should call the service getDataFromAPI")
-                XCTAssertEqual(error.responseCode, "-1", "should match the response code in ___VARIABLE_sceneName___ServiceLogicSpy")
+                XCTAssertEqual(error.statusCode, "-1", "should match the response code in ___VARIABLE_sceneName___ServiceLogicSpy")
                 XCTAssertEqual(error.message, "err.localizedDescription", "should match the response code in ___VARIABLE_sceneName___ServiceLogicSpy")
-                resultExpectation.fulfill()
-            }
-        }
-        waitForExpectations(timeout: 1.0, handler: nil)
-    }
-    func testGetDataDefaultFailure() {
-        // Given
-        spyService.possibleResult = .defaultFailure
-        let resultExpectation = expectation(description: "defaultFailure")
-        // When
-        sut.getData { result in
-            switch result {
-            case .success(_):
-                XCTFail("Should not succeed")
-            case .failure(let error):
-                // Then
-                XCTAssertTrue(self.spyService.getDataFromAPICalled, "should call the service getDataFromAPI")
-                XCTAssertEqual(error.responseCode, "1", "should match the response code in ___VARIABLE_sceneName___ServiceLogicSpy")
-                XCTAssertEqual(error.message, "result invalid", "should match the response code in ___VARIABLE_sceneName___ServiceLogicSpy")
                 resultExpectation.fulfill()
             }
         }

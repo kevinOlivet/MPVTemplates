@@ -50,7 +50,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
         XCTAssertTrue(spyAnalytics.eventLoadVCCalled, "getData should send the eventLoadVC")
         XCTAssertTrue(spyAnalytics.eventLoadDataOKCalled, "getData should send the eventLoadDataOK")
         XCTAssertTrue(spyView.displayDataCalled, "success should display the data")
-        XCTAssertEqual(spyView.displayDataSample?.sampleParameter, "testSampleParameterFromSpy", "should match the sampleParameter in ___VARIABLE_sceneName___ModelLogicSpy")
+        XCTAssertEqual(spyView.displayDataSample?.message, "testSampleParameterFromSpy", "should match the sampleParameter in ___VARIABLE_sceneName___ModelLogicSpy")
     }
     func testGetDataFailure() {
         // Given
@@ -60,18 +60,28 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
         // Then
         XCTAssertTrue(spyAnalytics.eventLoadVCCalled, "getData should send the eventLoadVC event")
         XCTAssertTrue(spyAnalytics.eventLoadDataErrorCalled, "getData should send the eventLoadDataOK")
-        XCTAssertEqual(spyAnalytics.eventLoadDataErrorSample?.responseCode, "123", "should match the error in the ___VARIABLE_sceneName___AnalyticsLogicSpy")
+        XCTAssertEqual(spyAnalytics.eventLoadDataErrorSample?.statusCode, "123", "should match the error in the ___VARIABLE_sceneName___AnalyticsLogicSpy")
         XCTAssertEqual(spyAnalytics.eventLoadDataErrorSample?.message, "testMessageFromSpy", "should match the error in the ___VARIABLE_sceneName___AnalyticsLogicSpy")
         XCTAssertTrue(spyView.displayErrorCalled, "failure should display the error")
-        XCTAssertEqual(spyView.displayErrorSample, "testMessageFromSpy", "should match the sampleParameter in ___VARIABLE_sceneName___ModelLogicSpy")
+        XCTAssertEqual(spyView.displayErrorType, .internet, "be the .internet for now in ___VARIABLE_sceneName___ModelLogicSpy")
+    }
+    func testGetDataFailureCounter() {
+        // Given
+        sut.counter = 3
+        spyModel.possibleResult = .failure
+        // When
+        sut.getData()
+        // Then
+        XCTAssertTrue(spyView.displayErrorCalled, "failure should display the error")
+        XCTAssertEqual(spyView.displayErrorType, .service, "be the .service for now in ___VARIABLE_sceneName___ModelLogicSpy")
     }
     func testGetEntityArray() {
         // Given
         // When
         let result = sut.getEntityArray()
         // Then
-        XCTAssertEqual(result.first?.sampleParameter, "testSampleParameterFromSpy", "should match the sampleParameter in ___VARIABLE_sceneName___ModelLogicSpy")
-        XCTAssertEqual(result.first?.sampleParameter1, 1234, "should match the sampleParameter1 in ___VARIABLE_sceneName___ModelLogicSpy")
+//        XCTAssertEqual(result.first?.key, "testSampleParameterFromSpy", "should match the sampleParameter in ___VARIABLE_sceneName___ModelLogicSpy")
+//        XCTAssertEqual(result.first?.value, true, "should match the sampleParameter1 in ___VARIABLE_sceneName___ModelLogicSpy")
     }
 
 }

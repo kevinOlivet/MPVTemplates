@@ -8,10 +8,9 @@
 
 import Foundation
 
-
 protocol ___VARIABLE_featureName___PresenterLogic {
     func getData()
-    func getEntityArray() -> [___VARIABLE_featureName___Entity]
+    func getEntityArray() -> [___VARIABLE_featureName___Entity.Data]
 }
 
 final class ___VARIABLE_featureName___Presenter: ___VARIABLE_featureName___PresenterLogic {
@@ -19,7 +18,8 @@ final class ___VARIABLE_featureName___Presenter: ___VARIABLE_featureName___Prese
     weak var view: ___VARIABLE_featureName___ViewLogic?
     var model: (___VARIABLE_featureName___ModelLogic & ___VARIABLE_featureName___DataStore)
     var analytics: ___VARIABLE_featureName___AnalyticsLogic
-    
+    var counter = 0
+
     init(
         _ model: (___VARIABLE_featureName___ModelLogic & ___VARIABLE_featureName___DataStore),
         _ analytics: ___VARIABLE_featureName___AnalyticsLogic
@@ -36,17 +36,22 @@ final class ___VARIABLE_featureName___Presenter: ___VARIABLE_featureName___Prese
             
             switch result {
             case .success(_):
-                guard let firstItem = self.model.storedEntityArray.first else { return }
+                guard let item = self.model.storedEntity else { return }
                 self.analytics.eventLoadDataOK()
-                view.displayData(firstItem)
+                view.displayData(item)
             case .failure(let err):
                 self.analytics.eventLoadDataError(err)
-                view.displayError("Ups", message: err.message)
+                if self.counter < 3 {
+                    self.counter += 1
+                    view.displayError(type: .internet)
+                } else {
+                    view.displayError(type: .service)
+                }
             }
         }
     }
     
-    func getEntityArray() -> [___VARIABLE_featureName___Entity] {
-        return self.model.storedEntityArray
+    func getEntityArray() -> [___VARIABLE_featureName___Entity.Data] {
+        return [self.model.storedEntity.data ?? ___VARIABLE_featureName___Entity.Data()]
     }
 }

@@ -31,8 +31,9 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
 
     // MARK: Test setup
     func setup___VARIABLE_sceneName___ViewController() {
+        sut = ___VARIABLE_sceneName___Factory().getInitVC() as? ___VARIABLE_sceneName___ViewController
         spyPresenter = ___VARIABLE_sceneName___PresenterLogicSpy()
-        sut = ___VARIABLE_sceneName___ViewController(spyPresenter)
+        sut.presenter = spyPresenter
         loadView()
     }
     func loadView() {
@@ -47,26 +48,25 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         // Then
         XCTAssertNotNil(sut, "sut should be instantiated")
         XCTAssertTrue(spyPresenter.getDataCalled, "viewDidLoad should call presenter getData")
-        XCTAssertEqual(sut.getLabelText, "___VARIABLE_sceneName___ViewController", "label text should match the default String")
+        XCTAssertEqual(sut.getLabelText, "___VARIABLE_sceneName___ViewController", "label text should match the expected String")
     }
     func testDisplayData() {
         // Given
-        let data = ___VARIABLE_sceneName___Entity(sampleParameter: "testSampleParameter", sampleParameter1: 1234)
+        let data = ___VARIABLE_sceneName___Entity(success: true, code: 0, message: "testMessage", data: MyFeature3Entity.Data())
         // When
         sut.displayData(data)
         // Then
         XCTAssertTrue(spyPresenter.getEntityArrayCalled, "presentData should call the presenter getEntityArrayCalled")
-        XCTAssertEqual(spyPresenter.getEntityArray().first?.sampleParameter, "getEntityArraySampleFirst", "should match the info in the PresenterLogicSpy")
-        XCTAssertEqual(spyPresenter.getEntityArray().first?.sampleParameter1, 1234, "should match the info in the PresenterLogicSpy")
+//        XCTAssertEqual(spyPresenter.getEntityArray().first?.key, "getEntityArraySampleFirst", "should match the info in the PresenterLogicSpy")
+//        XCTAssertEqual(spyPresenter.getEntityArray().first?.value, true, "should match the info in the PresenterLogicSpy")
         XCTAssertEqual(self.sut.getLabelText, "testSampleParameter", "label text should match the passed String")
     }
     func testDisplayError() {
         // Given
-        let message = "testMessage"
         // When
-        sut.displayError("Ups", message: message)
+        sut.displayError(type: .internet)
         // Then
-        XCTAssertEqual(self.sut.getLabelText, "testMessage", "label text should match the passed String")
+        XCTAssertNotNil(sut.fullScreenMessage)
     }
 
 }
