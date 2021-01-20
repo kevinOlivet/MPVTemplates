@@ -35,37 +35,22 @@ class ___VARIABLE_sceneName___AnalyticsTests: XCTestCase {
     }
 
     // MARK: Tests
-    func testEventLoadVC() {
+    func testTagScreen() {
         // Given
         // When
-        sut.eventLoadVC()
+        sut.tagScreen(screenName: .defaultScreen, screenClass: "testscreenClass")
         // Then
-        XCTAssertTrue(spyAnalytics.logEventCalled, "eventLoadVC should logEvent")
-        XCTAssertEqual(spyAnalytics.logEventEventName, "___VARIABLE_sceneName___", "should match the eventName passed")
-        XCTAssertEqual(spyAnalytics.logEventParameters["loadVC"] as? String, "OK", "should match the params passed")
+        XCTAssertTrue(spyAnalytics.setCurrentScreenCalled, "tagScreen should setCurrentScreen")
+        XCTAssertEqual(spyAnalytics.setCurrentScreenSample?.screenName, "Change this screen name to your own", "should match the screenName passed")
+        XCTAssertEqual(spyAnalytics.setCurrentScreenSample?.screenClass, "testscreenClass", "should match the screenClass passed")
     }
-    func testEventLoadDataOK() {
+    func testTagEvent() {
         // Given
         // When
-        sut.eventLoadDataOK()
+        sut.tagEvent(event: .defaultEvent)
         // Then
-        XCTAssertTrue(spyAnalytics.logEventCalled, "eventLoadDataOK should logEvent")
-        XCTAssertEqual(spyAnalytics.logEventEventName, "___VARIABLE_sceneName___", "should match the eventName passed")
-        XCTAssertEqual(spyAnalytics.logEventParameters["loadData"] as? String, "OK", "should match the params passed")
-    }
-    func testEventLoadDataError() {
-        // Given
-        let serviceError = APIManagerError(.BACKEND_ERROR, message: "testEventLoadDataError", "-1")
-        // When
-        sut.eventLoadDataError(serviceError)
-        // Then
-        XCTAssertTrue(spyAnalytics.logEventCalled, "eventLoadDataError should logEvent")
-        XCTAssertEqual(spyAnalytics.logEventEventName, "___VARIABLE_sceneName___", "should match the eventName passed")
-        XCTAssertTrue(spyAnalytics.registerErrorCalled, "eventLoadDataError should send isError")
-        XCTAssertEqual(spyAnalytics.registerErrorCode, -1001, "should match the responseCode in serviceError")
-        XCTAssertEqual(spyAnalytics.registerErrorParameters[NSLocalizedDescriptionKey] as? String, "The request failed.", "should match the eventName passed")
-        XCTAssertEqual(spyAnalytics.registerErrorParameters[NSLocalizedFailureReasonErrorKey] as? String, "The response returned a 404.", "should match the eventName passed")
-        XCTAssertEqual(spyAnalytics.registerErrorParameters[NSLocalizedRecoverySuggestionErrorKey] as? String, "Does this page exist?", "should match the eventName passed")
+        XCTAssertTrue(spyAnalytics.logEventCalled, "tagScreen should log the event")
+        XCTAssertEqual(spyAnalytics.logEventEventName, "change_this_event_or_delete", "should match the eventName passed")
     }
 
 }

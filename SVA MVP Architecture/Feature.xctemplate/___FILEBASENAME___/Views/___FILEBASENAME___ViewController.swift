@@ -37,6 +37,8 @@ final class ___VARIABLE_featureName___ViewController: OPBaseViewController, ___V
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TODO: - Change to your screenName here and in ___VARIABLE_featureName___Analytics
+//        presenter.tagScreen(screenName: .defaultScreen, screenClass: self.classForCoder.description())
         getData()
         addTestLabel()
     }
@@ -57,9 +59,10 @@ final class ___VARIABLE_featureName___ViewController: OPBaseViewController, ___V
         self.presenter.getData()
     }
     func displayData(_ data: ___VARIABLE_featureName___Entity) {
-        CommonsUtils.hideHud(true)
-        genericDisplayFullMessage(type: .messageSuccess, retryAction: #selector(getData))
+        genericDisplayFullMessage(type: .messageSuccess)
+        CommonsUtils.hideHud(false)
         // TODO: - Display data appropriately
+//        presenter.tagScreen(screenName: .messageSuccess, screenClass: self.classForCoder.description())
         self.label?.text = data.message
         for item in self.presenter.getEntityArray() {
 //            debugPrint("presentData: \(item.key)")
@@ -69,6 +72,8 @@ final class ___VARIABLE_featureName___ViewController: OPBaseViewController, ___V
         CommonsUtils.hideHud(true)
         genericDisplayFullMessage(type: type, retryAction: #selector(getData))
         // TODO: - Display error appropriately
+//        let screenName: ___VARIABLE_featureName___.Screen = type == .messageInternet ? .messageInternet : .messageService
+//        presenter.tagScreen(screenName: screenName, screenClass: classForCoder.description())
         self.label?.text = "displayErrorCalled"
         debugPrint("errorMessage called")
     }

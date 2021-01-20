@@ -7,35 +7,33 @@
 //
 
 import OPCommons
-import Foundation
 
 protocol ___VARIABLE_featureName___AnalyticsLogic {
-    func eventLoadVC()
-    func eventLoadDataOK()
-    func eventLoadDataError(_ serviceError: APIManagerError )
+    func tagScreen(screenName: ___VARIABLE_featureName___Analytics.Screen, screenClass: String)
+    func tagEvent(event: ___VARIABLE_featureName___Analytics.Event)
 }
 
 final class ___VARIABLE_featureName___Analytics: ___VARIABLE_featureName___AnalyticsLogic {
     
     var analyticsService: OPAnalyticsProtocol = OPAnalytics.shared
 
-    func eventLoadVC() {
-        analyticsService.logEvent(eventName: "___VARIABLE_featureName___", parameters: ["loadVC" : "OK"])
+    // TODO: Change the Event and Screen to yours
+    enum Event: String {
+        case defaultEvent = "change_this_event_or_delete"
     }
-    func eventLoadDataOK() {
-        analyticsService.logEvent(eventName: "___VARIABLE_featureName___", parameters:["loadData": "OK"])
+    enum Screen: String {
+        case defaultScreen = "Change this screen name to your own"
+        case messageSuccess = "Mensaje de ayuda enviado con éxito"
+        case messageInternet = "Error al enviar mensaje de ayuda (Reintentar)"
+        case messageService = "Error al enviar mensaje de ayuda (Volver)"
     }
-    func eventLoadDataError(_ serviceError: APIManagerError ) {
-        let parameters = [
-            NSLocalizedDescriptionKey: NSLocalizedString("The request failed.", comment: ""),
-            NSLocalizedFailureReasonErrorKey: NSLocalizedString("The response returned a 404.", comment: ""),
-            NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Does this page exist?", comment: ""),
-            "ProductID": "123456",
-            "View": "___VARIABLE_featureName___"
-        ]
-        
-        analyticsService.logEvent(eventName: "___VARIABLE_featureName___", parameters: parameters)
-        analyticsService.registerError(code: -1001, parameters: parameters)
+
+    // MARK: - Methods
+    func tagScreen(screenName: ___VARIABLE_featureName___Analytics.Screen, screenClass: String) {
+        analyticsService.setCurrentScreen(screenName.rawValue, screenClass: screenClass)
     }
-    
+    func tagEvent(event: ___VARIABLE_featureName___Analytics.Event) {
+        analyticsService.logEvent(eventName: event.rawValue, parameters: nil)
+    }
+
 }

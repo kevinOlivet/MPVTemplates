@@ -6,26 +6,24 @@
 //  Copyright (c) ___YEAR___ Transbank. All rights reserved.
 //
 
-import OPCommons
 @testable import ___PROJECTNAMEASIDENTIFIER___
 
 class ___VARIABLE_sceneName___AnalyticsLogicSpy: ___VARIABLE_sceneName___AnalyticsLogic {
 
-    var eventLoadVCCalled = false
-    var eventLoadDataOKCalled = false
-    var eventLoadDataErrorCalled = false
+    var tagScreenCalled = false
+    var tagEventCalled = false
 
-    var eventLoadDataErrorSample: APIManagerError?
+    var tagScreenSample: (screenName: ___VARIABLE_sceneName___Analytics.Screen, screenClass: String)?
+    var tagEventSample: ___VARIABLE_sceneName___Analytics.Event?
 
     // MARK: - Methods
-    func eventLoadVC() {
-        eventLoadVCCalled = true
+    func tagScreen(screenName: ___VARIABLE_sceneName___Analytics.Screen, screenClass: String) {
+        tagScreenCalled = true
+        tagScreenSample = (screenName, screenClass)
     }
-    func eventLoadDataOK() {
-        eventLoadDataOKCalled = true
+    func tagEvent(event: ___VARIABLE_sceneName___Analytics.Event) {
+        tagEventCalled = true
+        tagEventSample = event
     }
-    func eventLoadDataError(_ serviceError: APIManagerError) {
-        eventLoadDataErrorCalled = true
-        eventLoadDataErrorSample = serviceError
-    }
+
 }

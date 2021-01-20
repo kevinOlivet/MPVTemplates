@@ -10,6 +10,7 @@ import Foundation
 
 protocol ___VARIABLE_featureName___PresenterLogic {
     func getData()
+    func tagScreen(screenName: ___VARIABLE_featureName___Analytics.Screen, screenClass: String)
     func getEntityArray() -> [___VARIABLE_featureName___Entity.Data]
 }
 
@@ -29,18 +30,17 @@ final class ___VARIABLE_featureName___Presenter: ___VARIABLE_featureName___Prese
     }
     
     func getData() {
-        self.analytics.eventLoadVC()
+        // TODO: - Change to your event
+//        analytics.tagEvent(event: .defaultEvent)
         self.model.getData { [weak self] (result) in
-            
+
             guard let self = self, let view = self.view else { return }
-            
+
             switch result {
             case .success(_):
                 guard let item = self.model.storedEntity else { return }
-                self.analytics.eventLoadDataOK()
                 view.displayData(item)
             case .failure(let err):
-                self.analytics.eventLoadDataError(err)
                 if self.counter < 3 {
                     self.counter += 1
                     view.displayError(type: .internet)
@@ -50,8 +50,13 @@ final class ___VARIABLE_featureName___Presenter: ___VARIABLE_featureName___Prese
             }
         }
     }
-    
+
+    func tagScreen(screenName: ___VARIABLE_featureName___.Screen, screenClass: String) {
+        analytics.tagScreen(screenName: screenName, screenClass: screenClass)
+    }
+
     func getEntityArray() -> [___VARIABLE_featureName___Entity.Data] {
         return [self.model.storedEntity.data ?? ___VARIABLE_featureName___Entity.Data()]
     }
+
 }

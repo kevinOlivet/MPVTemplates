@@ -12,6 +12,9 @@ class ___VARIABLE_sceneName___PresenterLogicSpy: ___VARIABLE_sceneName___Present
 
     var getDataCalled = false
     var getEntityArrayCalled = false
+    var tagScreenCalled = false
+
+    var tagScreenSample: (screenName: ___VARIABLE_sceneName___Analytics.Screen, screenClass: String)?
 
     // MARK: - Methods
     func getData() {
@@ -21,6 +24,10 @@ class ___VARIABLE_sceneName___PresenterLogicSpy: ___VARIABLE_sceneName___Present
         getEntityArrayCalled = true
         let item = ___VARIABLE_sceneName___Entity(success: true, code: 0, message: "testMessage", data: MyFeature3Entity.Data())
         return [item.data!]
+    }
+    func tagScreen(screenName: ___VARIABLE_sceneName___Analytics.Screen, screenClass: String) {
+        tagScreenCalled = true
+        tagScreenSample = (screenName, screenClass)
     }
 
 }

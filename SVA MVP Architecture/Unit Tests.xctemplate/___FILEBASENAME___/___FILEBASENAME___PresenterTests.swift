@@ -51,6 +51,8 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
         XCTAssertTrue(spyAnalytics.eventLoadDataOKCalled, "getData should send the eventLoadDataOK")
         XCTAssertTrue(spyView.displayDataCalled, "success should display the data")
         XCTAssertEqual(spyView.displayDataSample?.message, "testSampleParameterFromSpy", "should match the sampleParameter in ___VARIABLE_sceneName___ModelLogicSpy")
+//        XCTAssertTrue(spyAnalytics.tagEventCalled, "the event should be tagged anyway")
+//        XCTAssertEqual(spyAnalytics.tagEventSample, .defaultEvent, "the event should be tagged anyway")
     }
     func testGetDataFailure() {
         // Given
@@ -83,5 +85,14 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
 //        XCTAssertEqual(result.first?.key, "testSampleParameterFromSpy", "should match the sampleParameter in ___VARIABLE_sceneName___ModelLogicSpy")
 //        XCTAssertEqual(result.first?.value, true, "should match the sampleParameter1 in ___VARIABLE_sceneName___ModelLogicSpy")
     }
+//    func testTagScreen() {
+//        // Given
+//        // When
+//        sut.tagScreen(screenName: .defaultScreen, screenClass: "testscreenClass")
+//        // Then
+//        XCTAssertTrue(spyAnalytics.tagScreenCalled)
+//        XCTAssertEqual(spyAnalytics.tagScreenSample?.screenName, .defaultScreen)
+//        XCTAssertEqual(spyAnalytics.tagScreenSample?.screenClass, "testscreenClass")
+//    }
 
 }

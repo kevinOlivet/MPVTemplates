@@ -49,6 +49,9 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut, "sut should be instantiated")
         XCTAssertTrue(spyPresenter.getDataCalled, "viewDidLoad should call presenter getData")
         XCTAssertEqual(sut.getLabelText, "___VARIABLE_sceneName___ViewController", "label text should match the expected String")
+//        XCTAssertTrue(spyPresenter.tagScreenCalled)
+//        XCTAssertEqual(spyPresenter.tagScreenSample?.screenName, .defaultScreen)
+//        XCTAssertEqual(spyPresenter.tagScreenSample?.screenClass, "OPHelpCenter.___VARIABLE_sceneName___ViewController")
     }
     func testDisplayData() {
         // Given
@@ -60,13 +63,19 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
 //        XCTAssertEqual(spyPresenter.getEntityArray().first?.key, "getEntityArraySampleFirst", "should match the info in the PresenterLogicSpy")
 //        XCTAssertEqual(spyPresenter.getEntityArray().first?.value, true, "should match the info in the PresenterLogicSpy")
         XCTAssertEqual(self.sut.getLabelText, "testSampleParameter", "label text should match the passed String")
+//        XCTAssertTrue(spyPresenter.tagScreenCalled)
+//        XCTAssertEqual(spyPresenter.tagScreenSample?.screenName, .messageSuccess)
+//        XCTAssertEqual(spyPresenter.tagScreenSample?.screenClass, "OPHelpCenter.___VARIABLE_sceneName___ViewController")
     }
     func testDisplayError() {
         // Given
         // When
-        sut.displayError(type: .internet)
+        sut.displayError(type: .messageInternet)
         // Then
         XCTAssertNotNil(sut.fullScreenMessage)
+//        XCTAssertTrue(spyPresenter.tagScreenCalled)
+//        XCTAssertEqual(spyPresenter.tagScreenSample?.screenName, .messageInternet)
+//        XCTAssertEqual(spyPresenter.tagScreenSample?.screenClass, "OPHelpCenter.___VARIABLE_sceneName___ViewController")
     }
 
 }
